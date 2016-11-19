@@ -4,7 +4,6 @@ var http = require('http');
 var url = require('url');
 http.createServer(function (req, res) {
   var path = url.parse(req.url);
-  console.log('hello')
   console.log(path);
   if (path.pathname === '/sms') {
     console.log('sms receipt');
