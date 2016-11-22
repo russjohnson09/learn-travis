@@ -3,6 +3,12 @@ var ip = process.env.IP;
 var http = require('http');
 var url = require('url');
 http.createServer(function (req, res) {
+  console.log("started request");
+  if (require('./horriblesubs.js')
+    ('/horriblesubs').handleRequest(req,res)) {
+    return;
+  }
+  
   var path = url.parse(req.url);
   console.log(path);
   if (path.pathname === '/sms') {
@@ -16,3 +22,4 @@ http.createServer(function (req, res) {
   res.end('Success');
   
 }).listen(port,ip);
+  console.log("started server");
